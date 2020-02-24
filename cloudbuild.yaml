@@ -14,4 +14,4 @@ steps:
   env:
   - 'PORT=8080'
 images:
-- gcr.io/$PROJECT_ID/fast-api
+- gcr.io/$PROJECT_ID/flowers-api
