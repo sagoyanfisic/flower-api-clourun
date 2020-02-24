@@ -1,15 +1,15 @@
 steps:
   # build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/fast-api:${SHORT_SHA}', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/flowers-api:${SHORT_SHA}', '.']
   # push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/fast-api']
   # deploy container image to Cloud Run
   #'--platform' 'gke'
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['beta', 'run', 'deploy', 'fast-api',
-  '--image', 'gcr.io/$PROJECT_ID/django-app:${SHORT_SHA}', '--memory', '1Gi', '--concurrency', '15',
+  args: ['beta', 'run', 'deploy', 'flowers-api',
+  '--image', 'gcr.io/$PROJECT_ID/flowers-api:${SHORT_SHA}', '--memory', '1Gi', '--concurrency', '1',
   '--max-instances', '2', '--platform',  'managed', '--region',  'us-central1', '--allow-unauthenticated']
   env:
   - 'PORT=8080'
