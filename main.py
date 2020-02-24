@@ -6,14 +6,14 @@ app = FastAPI()
 
 #flower list
 @app.get("/list/flowers/")
-async def read_root():
+async def list_flower_all():
     with open('flower-api.json') as json_file:
         data = json.load(json_file)
     return data
 
 #flower detail
 @app.get("/detail/flower/{item_id}")
-async def read_root():
+async def detail_flower(item_id: str):
     with open('flower-api.json') as json_file:
         data = json.load(json_file)
         flower = {}
