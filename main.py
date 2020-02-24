@@ -16,7 +16,18 @@ async def read_root():
 async def read_root():
     with open('flower-api.json') as json_file:
         data = json.load(json_file)
-    return data
+        flower = {}
+        for item in data['flower_data']:
+            if item['id'] == int(item_id):
+                flower.append({
+                    'id':item['id'],
+                    'name':item['name'],
+                    'scientific_name':item['scientific_name'],
+                    'description':item['description'],
+                    'applications':item['applications'],
+                    'properties':item['properties'],
+                })
+    return json.load(flower)
 
 #flower detail
 @app.get("/items/{item_id}")
