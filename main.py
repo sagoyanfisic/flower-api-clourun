@@ -27,7 +27,7 @@ async def detail_flower(item_id: str):
                     'applications':item['applications'],
                     'properties':item['properties'],
                 })
-    return json.dumps(flower)
+    return flower
 
 #flower detail
 @app.get("/items/{item_id}")
