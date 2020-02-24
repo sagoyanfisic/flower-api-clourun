@@ -5,7 +5,7 @@ app = FastAPI()
 
 
 #flower list
-@app.get("list/flowers/")
+@app.get("/list/flowers/")
 async def read_root():
     with open('flower-api.json') as json_file:
         data = json.load(json_file)
