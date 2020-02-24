@@ -19,7 +19,7 @@ async def detail_flower(item_id: str):
         flower = {}
         for item in data['flower_data']:
             if item['id'] == int(item_id):
-                flower.append({
+                flower.update({
                     'id':item['id'],
                     'name':item['name'],
                     'scientific_name':item['scientific_name'],
