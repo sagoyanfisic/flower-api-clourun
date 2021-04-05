@@ -4,13 +4,24 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-# @app.get("/renipress/")
-# def list_renipress_all():
-#     renipress_susalud = "http://www.susalud.gob.pe/consultaIPRESSMapasOra.asp"
-#     response = rq.get(renipress_susalud, stream=True)
-#     result = json.loads(response.text)
-#     data = {"data":result}
-#     result data
+@app.get("/renipress/")
+def list_renipress_all():
+    headers = {
+      'Content-Type': "application/json",
+      'authorization': "Basic QUtJQUpTNVRTS1hVN1BROlo3cUlTcytHOHVBVkY1SWpEL1lnSnJMdFM1dDVod2JnTw==",
+      'cache-control': "no-cache",
+      'Postman-Token': "c2c06042-d6dd-43b5-ac96-e5560cd1bbf7"
+    }
+    renipress_susalud = "http://www.susalud.gob.pe/consultaIPRESSMapasOra.asp"
+    response = requests.request("GET", renipress_susalud, headers=headers)
+    result = json.loads(response.text)
+    data = {
+        'message': "Se crearon los datos satisfactoriamente.",
+        'status': "success",
+        'status_code': response.status_code,
+        'data': json.loads(response.text)
+    }
+    return data
     
     
 @app.post("/data_sat/")
