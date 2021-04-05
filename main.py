@@ -39,16 +39,6 @@ async def read_item(item_id: int, q: str = None):
     return {"item_id": item_id, "q": q}
 
 
-@app.get("/renipress/{renipress_id}")
-async def list_flower_all():
-    renipress_susalud = "http://www.susalud.gob.pe/consultaIPRESSMapasOra.asp"
-            try:
-            args = {"resource_id": self.resource_id}
-            response = rq.get(renipress_susalud, params=args, stream=True)
-            return response.json()["result"]
-        except rq.HTTPError:
-            return
-
 @app.get("/renipress")
 async def list_renipress_all():
     renipress_susalud = "http://www.susalud.gob.pe/consultaIPRESSMapasOra.asp"
@@ -60,7 +50,7 @@ async def list_renipress_all():
 
 
 @app.get("/renipress/{renipress_id}")
-async def list_flower_all(renipress_id: int):
+async def list_renipress_id(renipress_id: int):
     renipress_susalud = "http://www.susalud.gob.pe/consultaIPRESSMapasOra.asp"
     try:
         args = {"resource_id": renipress_id}
