@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 import json
-import requests as rq
 
 app = FastAPI()
 
@@ -35,23 +34,3 @@ async def detail_flower(item_id: str):
 async def read_item(item_id: int, q: str = None):
     return {"item_id": item_id, "q": q}
 
-
-@app.get("/renipress/")
-def list_renipress_all():
-    renipress_susalud = "http://www.susalud.gob.pe/consultaIPRESSMapasOra.asp"
-    try:
-        response = rq.get(renipress_susalud, stream=True)
-        return response.json()["result"]
-    except rq.HTTPError:
-        return
-
-
-@app.get("/renipress/{renipress_id}")
-def list_renipress_id(renipress_id: int):
-    renipress_susalud = "http://www.susalud.gob.pe/consultaIPRESSMapasOra.asp"
-    try:
-        args = {"resource_id": renipress_id}
-        response = rq.get(renipress_susalud, params=args, stream=True)
-        return response.json()["result"]
-    except rq.HTTPError:
-        return
