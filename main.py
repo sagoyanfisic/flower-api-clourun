@@ -1,9 +1,7 @@
 from fastapi import FastAPI
 import json
-from typing import List, Dict
 import requests as rq
 import json
-from json.decoder import JSONDecodeError
 
 app = FastAPI()
 
