@@ -4,13 +4,13 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/renipress/")
-def list_renipress_all():
-    renipress_susalud = "http://www.susalud.gob.pe/consultaIPRESSMapasOra.asp"
-    response = rq.get(renipress_susalud, stream=True)
-    result = json.loads(response.text)
-    data = {"data":result}
-    result data
+# @app.get("/renipress/")
+# def list_renipress_all():
+#     renipress_susalud = "http://www.susalud.gob.pe/consultaIPRESSMapasOra.asp"
+#     response = rq.get(renipress_susalud, stream=True)
+#     result = json.loads(response.text)
+#     data = {"data":result}
+#     result data
     
     
 @app.post("/data_sat/")
